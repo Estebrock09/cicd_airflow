@@ -1,11 +1,7 @@
 from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.contrib.operators.bigquery_operator import BigQueryOperator
-from airflow.utils import dates
-import base64
 import datetime
-import json
-import numpy as np
 
 #######################################################################################
 # PARAMETROS
