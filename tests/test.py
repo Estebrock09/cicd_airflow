@@ -1,7 +1,9 @@
 import os
 import sys
+
 import pytest
 from airflow.models import DagBag
+
 sys.path.append(os.path.join(os.path.dirname(__file__), "../dags"))
 
 # Airflow variables called from DAGs under test are stubbed out
