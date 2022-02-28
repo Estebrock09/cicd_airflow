@@ -36,7 +36,7 @@ def test_no_emails_on_retry(dag_bag):
 
 def test_three_or_less_retries(dag_bag):
     for dag_id, dag in dag_bag.dags.items():
-        assert dag.default_args["retries"] <= 2
+        assert dag.default_args["retries"] >= 3
 
 #
 # def test_requires_tags(dag_bag):

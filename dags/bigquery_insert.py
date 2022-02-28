@@ -40,7 +40,7 @@ with DAG(nameDAG,
     task_bq_op = BigQueryOperator(task_id='task_bq_op',
                                   sql=query_bq_op,
                                   use_legacy_sql=False,
-                                  bigquery_conn_id=GBQ_CONNECTION_ID,
+                                  gcp_conn_id=GBQ_CONNECTION_ID,
                                   params={
                                       'google_project_id': "hallowed-hold-337921",
                                       'queryDataset': "estebrock_dataset",
