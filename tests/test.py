@@ -21,7 +21,7 @@ def test_no_import_errors(dag_bag):
 
 def test_no_emails_on_failure(dag_bag):
     for dag_id, dag in dag_bag.dags.items():
-        assert not dag.default_args["email_on_failure"]
+        assert dag.default_args["email_on_failure"]
 
 
 def test_dag_id_requires_specific_prefix(dag_bag):
