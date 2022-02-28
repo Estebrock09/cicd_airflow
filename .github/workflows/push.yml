@@ -32,4 +32,4 @@ jobs:
       run: |
         pip install pytest
         cd tests || exit
-        pytest tests.py -v
+        pytest test.py -v
