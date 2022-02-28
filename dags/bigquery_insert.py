@@ -30,12 +30,11 @@ SELECT
 """
 
 with DAG(
-    nameDAG,
-    default_args=default_args,
-    catchup=False,
-    max_active_runs=3,
-    schedule_interval="30 * * * *") as dag:
-
+        nameDAG,
+        default_args=default_args,
+        catchup=False,
+        max_active_runs=3,
+        schedule_interval="30 * * * *") as dag:
     t_begin = DummyOperator(task_id="begin")
 
     task_bq_op = BigQueryOperator(task_id='task_bq_op',
