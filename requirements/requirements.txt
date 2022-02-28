@@ -1,4 +1,4 @@
-airflow
+apache-airflow
 base64
 datetime
 json
