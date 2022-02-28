@@ -1,6 +1,5 @@
 import os
-import sysimport
-
+import sys
 import pytest
 from airflow.models import DagBag
 sys.path.append(os.path.join(os.path.dirname(__file__), "../dags"))
