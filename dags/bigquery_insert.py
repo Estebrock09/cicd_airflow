@@ -14,7 +14,7 @@ default_args = {
     'depends_on_past': False,
     'start_date': datetime.datetime(2022, 1, 19),
     'email': email,
-    'email_on_failure': False,
+    'email_on_failure': True,
     'email_on_retry': True,
     'retries': 1,
     'retry_delay': datetime.timedelta(minutes=1),
