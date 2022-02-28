@@ -18,6 +18,16 @@ def dag_bag(request):
 def test_no_import_errors(dag_bag):
     assert not dag_bag.import_errors
 
+
+def test_no_emails_on_failure(dag_bag):
+    for dag_id, dag in dag_bag.dags.items():
+        assert not dag.default_args["email_on_failure"]
+
+
+def test_dag_id_requires_specific_prefix(dag_bag):
+    for dag_id, dag in dag_bag.dags.items():
+        assert str.lower(dag_id).startswith("airflow_")
+
 #
 # def test_requires_tags(dag_bag):
 #     for dag_id, dag in dag_bag.dags.items():
@@ -52,9 +62,7 @@ def test_no_import_errors(dag_bag):
 #         assert not dag.default_args["email_on_retry"]
 #
 #
-# def test_no_emails_on_failure(dag_bag):
-#     for dag_id, dag in dag_bag.dags.items():
-#         assert not dag.default_args["email_on_failure"]
+
 #
 #
 # def test_three_or_less_retries(dag_bag):
@@ -67,7 +75,3 @@ def test_no_import_errors(dag_bag):
 #         assert str.lower(dag_id).find("__") != -1
 #
 #
-# def test_dag_id_requires_specific_prefix(dag_bag):
-#     for dag_id, dag in dag_bag.dags.items():
-#         assert str.lower(dag_id).startswith("data_lake__") \
-#            or str.lower(dag_id).startswith("redshift_demo__")
