@@ -28,6 +28,16 @@ def test_dag_id_requires_specific_prefix(dag_bag):
     for dag_id, dag in dag_bag.dags.items():
         assert str.lower(dag_id).startswith("airflow_")
 
+
+def test_no_emails_on_retry(dag_bag):
+    for dag_id, dag in dag_bag.dags.items():
+        assert dag.default_args["email_on_retry"]
+
+
+def test_three_or_less_retries(dag_bag):
+    for dag_id, dag in dag_bag.dags.items():
+        assert dag.default_args["retries"] < 3
+
 #
 # def test_requires_tags(dag_bag):
 #     for dag_id, dag in dag_bag.dags.items():
@@ -47,31 +57,11 @@ def test_dag_id_requires_specific_prefix(dag_bag):
 #         assert len(dag.description) > 15
 #
 #
-# def test_owner_len_greater_than_five(dag_bag):
-#     for dag_id, dag in dag_bag.dags.items():
-#         assert len(dag.owner) > 5
-#
-#
+
 # def test_owner_not_airflow(dag_bag):
 #     for dag_id, dag in dag_bag.dags.items():
 #         assert str.lower(dag.owner) != "airflow"
 #
 #
-# def test_no_emails_on_retry(dag_bag):
-#     for dag_id, dag in dag_bag.dags.items():
-#         assert not dag.default_args["email_on_retry"]
-#
-#
 
-#
-#
-# def test_three_or_less_retries(dag_bag):
-#     for dag_id, dag in dag_bag.dags.items():
-#         assert dag.default_args["retries"] <= 3
-#
-#
-# def test_dag_id_contains_prefix(dag_bag):
-#     for dag_id, dag in dag_bag.dags.items():
-#         assert str.lower(dag_id).find("__") != -1
-#
-#
+
