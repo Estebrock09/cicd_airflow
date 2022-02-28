@@ -30,24 +30,26 @@ SELECT
 """
 
 with DAG(
-        nameDAG,
-        default_args=default_args,
-        catchup=False,
-        max_active_runs=3,
-        schedule_interval="30 * * * *") as dag:
+    nameDAG,
+    default_args=default_args,
+    catchup=False,
+    max_active_runs=3,
+    schedule_interval="30 * * * *"
+) as dag:
     t_begin = DummyOperator(task_id="begin")
 
-    task_bq_op = BigQueryOperator(task_id='task_bq_op',
-                                  sql=query_bq_op,
-                                  use_legacy_sql=False,
-                                  gcp_conn_id=GBQ_CONNECTION_ID,
-                                  params={
-                                      'google_project_id': "hallowed-hold-337921",
-                                      'queryDataset': "estebrock_dataset",
-                                      'queryTable': "time",
-                                      'date_process': str(datetime.datetime.now().strftime("%Y-%m-%d"))
-                                  }
-                                  )
+    task_bq_op = BigQueryOperator(
+        task_id='task_bq_op',
+        sql=query_bq_op,
+        use_legacy_sql=False,
+        gcp_conn_id=GBQ_CONNECTION_ID,
+        params={
+          'google_project_id': "hallowed-hold-337921",
+          'queryDataset': "estebrock_dataset",
+          'queryTable': "time",
+          'date_process': str(datetime.datetime.now().strftime("%Y-%m-%d"))
+        }
+    )
 
     t_end = DummyOperator(task_id="end")
 
