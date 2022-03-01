@@ -19,6 +19,16 @@ def test_no_import_errors(dag_bag):
     assert not dag_bag.import_errors
 
 
+def test_is_not_none(dag_bag):
+    for dag_id, dag in dag_bag.dags.items():
+        assert dag is not None
+
+
+def test_task_quantity(dag_bag):
+    for dag_id, dag in dag_bag.dags.items():
+        assert len(dag.tasks) > 2
+
+
 def test_no_emails_on_failure(dag_bag):
     for dag_id, dag in dag_bag.dags.items():
         assert dag.default_args["email_on_failure"]
