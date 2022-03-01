@@ -1,0 +1,7 @@
+#!/Users/esteban/Documents/Development/GCP/cicd_airflow/venv/bin/python
+import json_merge_patch.cli
+json_merge_patch.cli.main()
+
+
+
+
