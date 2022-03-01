@@ -53,4 +53,4 @@ with DAG(
 
     t_end = DummyOperator(task_id="end")
 
-    t_begin >> task_bq_op >> t_end
+    task_bq_op
