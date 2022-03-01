@@ -26,7 +26,7 @@ def test_is_not_none(dag_bag):
 
 def test_task_quantity(dag_bag):
     for dag_id, dag in dag_bag.dags.items():
-        assert len(dag.tasks) > 2
+        assert len(dag.tasks) >= 3
 
 
 def test_no_emails_on_failure(dag_bag):
