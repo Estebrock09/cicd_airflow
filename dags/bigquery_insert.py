@@ -22,7 +22,7 @@ default_args = {
 }
 
 query_bq_op = """
-INSERT `{{ params.google_project_id }}.{{ params.queryDataset }}.{{ params.queryTable}}` (
+INSERT `hallowed-hold-337921.estebrock_dataset.time` (
     date
 )
 SELECT
