@@ -6,9 +6,6 @@ from airflow.models import DagBag
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "../dags"))
 
-# Airflow variables called from DAGs under test are stubbed out
-os.environ["AIRFLOW_VAR_DATA_LAKE_BUCKET"] = "test_bucket"
-
 
 @pytest.fixture(params=["../dags/"])
 def dag_bag(request):

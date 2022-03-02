@@ -3,7 +3,7 @@ on:
   pull_request:
     branches: [develop]
   push:
-    branches: [develop]
+    branches: [develop, my_repo]
 
 jobs:
   test:
@@ -39,4 +39,14 @@ jobs:
     - name: test project
       if: github.event_name == 'push'
       run: |
-        echo "New line only when push"
+        echo "New line only when merge"
+    - uses: repo-sync/pull-request@v2
+      name: pull request to Develop
+      if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+      with:
+        destination_branch: "develop"
+        pr_title: "Pulling ${{ github.ref }} into develop"
+        pr_body: " Automatic Action"
+        pr_reviewer: "Estebrock09"
+        pr_draft: true
+        github_token: ${{ secrets.GITHUB_TOKEN }}
