@@ -45,7 +45,7 @@ jobs:
         echo "${{ github.ref }}"
     - uses: repo-sync/pull-request@v2
       name: pull request to Develop
-      if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+      if: github.event_name == 'push' && github.ref == 'refs/heads/my_repo'
       with:
         destination_branch: "develop"
         pr_title: "Pulling ${{ github.ref }} into develop"
