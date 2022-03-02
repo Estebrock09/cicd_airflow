@@ -1,6 +1,6 @@
 from airflow import DAG
 from airflow.operators.dummy import DummyOperator
-from airflow.providers.google.cloud.operators.bigquery import BigQueryInsertJobOperator
+from airflow.contrib.operators.bigquery_operator import BigQueryOperator
 import datetime
 
 nameDAG = "airflow_bigquery_insert"
@@ -22,7 +22,7 @@ default_args = {
 }
 
 query_bq_op = """
-INSERT `hallowed-hold-337921.estebrock_dataset.time` (
+INSERT `{{ params.google_project_id }}.{{ params.queryDataset }}.{{ params.queryTable}}` (
     date
 )
 SELECT
@@ -38,14 +38,17 @@ with DAG(
 ) as dag:
     t_begin = DummyOperator(task_id="begin")
 
-    task_bq_op = BigQueryInsertJobOperator(
-        task_id="task_bq_op",
-        configuration={
-            "query": {
-                "query": query_bq_op,
-                "useLegacySql": False,
-            }
-        },
+    task_bq_op = BigQueryOperator(
+        task_id='task_bq_op',
+        sql=query_bq_op,
+        use_legacy_sql=False,
+        gcp_conn_id=GBQ_CONNECTION_ID,
+        params={
+            'google_project_id': "hallowed-hold-337921",
+            'queryDataset': "estebrock_dataset",
+            'queryTable': "time",
+            'date_process': str(datetime.datetime.now().strftime("%Y-%m-%d"))
+        }
     )
 
     t_end = DummyOperator(task_id="end")
