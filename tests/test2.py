@@ -1,4 +1,5 @@
 import os
+import time
 import logging
 import unittest
 from airflow.models import DagBag
@@ -17,6 +18,18 @@ class TestDagIntegrity(unittest.TestCase):
             len(self.dagbag.import_errors),
             f"DAG import failures. Errors: {self.dagbag.import_errors}",
         )
+
+    def test_import_time(self):
+        """Test that all DAGs can be parsed under the threshold time."""
+        for dag_id in self.dagbag.dag_ids:
+            start = time.time()
+
+            self.dagbag.process_file(self.dagbag.get_dag(dag_id).filepath)
+
+            end = time.time()
+            total = end - start
+
+            self.assertLessEqual(total, self.LOAD_SECOND_THRESHOLD)
 
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestDagIntegrity)
