@@ -34,7 +34,6 @@ jobs:
         pytest test.py -v
     - name: Test with Unittest
       run: |
-        pip install logging
         cd tests || exit
         pytest test2.py -v
     - name: test project
