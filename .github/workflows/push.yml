@@ -21,7 +21,8 @@ jobs:
         pip check
     - name: Lint with Flake8
       run: |
-        pip install flake8
+        pip install flake8, flake8-colors
+
         flake8 --ignore E501 dags --benchmark -v
     - name: Confirm Black code compliance
       run: |
@@ -32,7 +33,12 @@ jobs:
         pip install pytest
         cd tests || exit
         pytest test.py -v
-        pytest test2.py -v
+    - name: Test with Unittest
+        run: |
+          pip install unittest
+          pip install logging
+          cd tests || exit
+          pytest test2.py -v
     - name: test project
       if: github.event_name == 'push'
       run: |
