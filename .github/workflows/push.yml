@@ -42,6 +42,7 @@ jobs:
       if: github.event_name == 'push'
       run: |
         echo "New line only when merge"
+        echo "${{ github.ref }}"
     - uses: repo-sync/pull-request@v2
       name: pull request to Develop
       if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
