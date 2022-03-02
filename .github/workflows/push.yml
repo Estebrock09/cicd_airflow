@@ -1,9 +1,11 @@
 name: Test DAGs
 on:
-  pull_request:
-    branches: [develop]
   push:
-    branches: [develop, my_repo]
+    branches:
+      - my_repo
+  pull_request:
+    branches: [main]
+
 
 jobs:
   test:
