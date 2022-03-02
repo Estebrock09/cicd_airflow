@@ -1,3 +1,14 @@
-apache-airflow
+apache-airflow[gcp_api]==1.10.6
 numpy
 apache-airflow-providers-google
+flake8>=3.6.0
+flake8-colors
+nose
+pytest
+parameterized
+pylint~=2.3.1
+nose
+mock
+mypy
+tenacity==5.1.5
+Werkzeug==0.16.0
