@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b60cff13-650b-4bad-9173-a53dced3d902" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/tests/test2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.github/workflows/push.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/push.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +35,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/dags" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tests" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -81,7 +81,7 @@
       <updated>1646072443063</updated>
       <workItem from="1646072447273" duration="14159000" />
       <workItem from="1646152154453" duration="77000" />
-      <workItem from="1646152233750" duration="6775000" />
+      <workItem from="1646152233750" duration="7418000" />
     </task>
     <servers />
   </component>
