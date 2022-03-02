@@ -34,11 +34,11 @@ jobs:
         cd tests || exit
         pytest test.py -v
     - name: Test with Unittest
-        run: |
-          pip install unittest
-          pip install logging
-          cd tests || exit
-          pytest test2.py -v
+      run: |
+        pip install unittest
+        pip install logging
+        cd tests || exit
+        pytest test2.py -v
     - name: test project
       if: github.event_name == 'push'
       run: |
