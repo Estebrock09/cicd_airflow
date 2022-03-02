@@ -2,10 +2,12 @@ name: Test DAGs
 on:
   push:
     branches:
-      - my_repo
+      - develop
+#    paths:
+#      - 'dags/**'
   pull_request:
-    branches: [main]
-
+    branches:
+      - main
 
 jobs:
   test:
@@ -38,18 +40,13 @@ jobs:
       run: |
         cd tests || exit
         pytest test2.py -v
-    - name: test project
-      if: github.event_name == 'push'
-      run: |
-        echo "New line only when merge"
-        echo "${{ github.ref }}"
     - uses: repo-sync/pull-request@v2
-      name: pull request to Develop
-      if: github.event_name == 'push' && github.ref == 'refs/heads/my_repo'
+      name: pull request to Main
+      if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
       with:
-        destination_branch: "develop"
-        pr_title: "Pulling ${{ github.ref }} into develop"
+        destination_branch: "main"
+        pr_title: "Pulling ${{ github.ref }} into main"
         pr_body: " Automatic Action"
-        pr_reviewer: "Estebrock09"
+        pr_reviewer: ${GITHUB_ACTOR}
         pr_draft: true
         github_token: ${{ secrets.GITHUB_TOKEN }}
