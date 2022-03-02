@@ -47,8 +47,8 @@ with DAG(
             "google_project_id": "hallowed-hold-337921",
             "queryDataset": "estebrock_dataset",
             "queryTable": "time",
-            "date_process": str(datetime.datetime.now().strftime("%Y-%m-%d"))
-        }
+            "date_process": str(datetime.datetime.now().strftime("%Y-%m-%d")),
+        },
     )
 
     t_end = DummyOperator(task_id="end")
