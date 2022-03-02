@@ -2,7 +2,6 @@ from airflow import DAG
 from airflow.operators.dummy import DummyOperator
 from airflow.providers.google.cloud.operators.bigquery import BigQueryInsertJobOperator
 import datetime
-import numpy
 
 nameDAG = "airflow_bigquery_insert"
 project = "hallowed-hold-337921"
