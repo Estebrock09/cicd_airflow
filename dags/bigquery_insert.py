@@ -3,7 +3,7 @@ from airflow.operators.dummy import DummyOperator
 from airflow.contrib.operators.bigquery_operator import BigQueryOperator
 import datetime
 
-nameDAG = "airflow_bigquery_insert"
+nameDAG = "airflow_bigquery_insert_f"
 project = "hallowed-hold-337921"
 owner = "estebrocktest"
 email = ["estebrocktest@gmail.com"]
